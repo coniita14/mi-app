@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EquipoController;
 
 Route::get('/', function () {
     $alumno = "Constanza Castillo";
@@ -22,3 +23,7 @@ Route::get('/catalogo', function () {
 Route::get('/insumo/{id}', function ($id) {
     return view('detalle', compact('id'));
 });
+
+Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index');
+
+Route::post('/equipos/guardar', [EquipoController::class, 'store'])->name('equipos.store');
